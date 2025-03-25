@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.graphsledon.HelloController">
+   <children>
+      <AnchorPane fx:id="apPane" prefHeight="561.0" prefWidth="600.0">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+         <children>
+            <StackPane layoutX="53.0" layoutY="45.0" onMouseClicked="#onVertexClicked">
+               <children>
+                  <Circle fill="#a1abff" radius="38.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="B">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font></Text>
+               </children>
+            </StackPane>
+            <StackPane layoutX="318.0" layoutY="190.0" onMouseClicked="#onVertexClicked">
+               <children>
+                  <Circle fill="#a1abff" radius="38.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="B">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font></Text>
+               </children>
+            </StackPane>
+         </children>
+      </AnchorPane>
+      <GridPane>
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onSaveButtonClicked" text="Save" textAlignment="CENTER" />
+            <Button fx:id="btnAddVertex" mnemonicParsing="false" onAction="#onAddVertexButtonClick" text="Add Vertices" GridPane.columnIndex="1" />
+            <Button fx:id="btnClear" mnemonicParsing="false" text="Clear" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+   </children>
+</VBox>
