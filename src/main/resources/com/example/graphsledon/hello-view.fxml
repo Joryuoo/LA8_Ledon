@@ -3,34 +3,23 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.graphsledon.HelloController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="650.0" style="-fx-background-color: #212528;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.graphsledon.HelloController">
    <children>
-      <AnchorPane fx:id="apPane" prefHeight="561.0" prefWidth="600.0">
+      <AnchorPane fx:id="apPane" prefHeight="561.0" prefWidth="600.0" style="-fx-background-color: #f8fafb; -fx-background-radius: 7;">
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
          <children>
             <StackPane layoutX="53.0" layoutY="45.0" onMouseClicked="#onVertexClicked">
                <children>
-                  <Circle fill="#a1abff" radius="38.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="B">
-                     <font>
-                        <Font name="Arial Bold" size="15.0" />
-                     </font></Text>
-               </children>
-            </StackPane>
-            <StackPane layoutX="318.0" layoutY="190.0" onMouseClicked="#onVertexClicked">
-               <children>
-                  <Circle fill="#a1abff" radius="38.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="#ffc232" radius="38.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="B">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
@@ -39,20 +28,36 @@
             </StackPane>
          </children>
       </AnchorPane>
-      <GridPane>
-         <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
-         </rowConstraints>
+      <HBox alignment="CENTER" prefHeight="43.0" prefWidth="650.0">
          <children>
-            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onSaveButtonClicked" text="Save" textAlignment="CENTER" />
-            <Button fx:id="btnAddVertex" mnemonicParsing="false" onAction="#onAddVertexButtonClick" text="Add Vertices" GridPane.columnIndex="1" />
-            <Button fx:id="btnClear" mnemonicParsing="false" text="Clear" GridPane.columnIndex="2" />
+            <Button fx:id="btnSave" alignment="CENTER" mnemonicParsing="false" onAction="#onSaveButtonClicked" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #186cf8;" text="Save" textAlignment="CENTER" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="btnAdd" alignment="CENTER" mnemonicParsing="false" onAction="#onAddButtonClick" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #198855;" text="Add " textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="btnClear" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClearButtonClick" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #dc3544;" text="Clear" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
          </children>
-      </GridPane>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </HBox>
    </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
 </VBox>

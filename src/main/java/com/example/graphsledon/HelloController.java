@@ -16,10 +16,13 @@ import javafx.scene.text.Text;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Consumer;
 
 public class HelloController {
     public AnchorPane apPane;
+    public Button btnAdd;
+    public Button btnClear;
     @FXML
     private Button btnSave;
     List<Vertex> vertices;
@@ -29,9 +32,10 @@ public class HelloController {
     public void initialize(){
         apPane.getChildren().clear();
         vertices = new ArrayList<>();
-
+        System.out.println("init");
         try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("vertices.txt"))){
             vertices = (ArrayList<Vertex>) ois.readObject();
+            System.out.println("ois");
 
             for(Vertex v: vertices){
                 StackPane sp = new StackPane();
@@ -41,7 +45,8 @@ public class HelloController {
 
                 Circle c = new Circle();
                 c.setRadius(40);
-                c.setFill(Paint.valueOf("#fcbe03"));
+
+                c.setFill(Paint.valueOf(v.color));
 
                 sp.getChildren().add(c);
 
@@ -66,7 +71,9 @@ public class HelloController {
             for(Node n : apPane.getChildren()){
                 if(n instanceof StackPane){
                     Text text = (Text) ((StackPane) n).getChildren().get(1);
-                    vertices.add(new Vertex(text.getText(),n.getLayoutX(), n.getLayoutY()));
+                    Circle c = (Circle) ((StackPane) n).getChildren().get(0);
+                    String color = c.getFill().toString();
+                    vertices.add(new Vertex(text.getText(),n.getLayoutX(), n.getLayoutY(), color));
                 }
             }
 
@@ -87,10 +94,49 @@ public class HelloController {
                 StackPane sp = (StackPane) event.getSource();
                 Text text = (Text) sp.getChildren().get(1);
                 text.setText(s);
-
             }
         });
     }
 
+
+    public void onAddButtonClick(ActionEvent actionEvent) {
+        Random random = new Random();
+        double height = 561.0;
+        double width = 600.0;
+        StackPane sp = new StackPane();
+        sp.setOnMouseClicked(this::onVertexClicked);
+        Circle c = new Circle();
+        c.setRadius(40);
+//                              blue        //gray   //green     //red      //yellow   //skyblue
+        String[] randomColor = {"#186cf8", "#6b757d", "#198855", "#dc3544", "#ffc232", "#11caf0"};
+        String randColor = randomColor[random.nextInt(randomColor.length)];
+        c.setFill(Paint.valueOf(randColor));
+        sp.getChildren().add(c);
+
+        double x = random.nextDouble() * (width - 80); 
+        double y = random.nextDouble() * (height - 80);
+
+        String abcXD = "abcdefghijklmnopqrstuvwxyz";
+
+        char randChar = abcXD.charAt(random.nextInt(abcXD.length()));
+
+        Text text = new Text();
+        text.setText("" + randChar);
+
+        sp.setLayoutX(x);
+        sp.setLayoutY(y);
+
+        sp.getChildren().add(text);
+        apPane.getChildren().add(sp);
+
+        vertices.add(new Vertex("" + randChar, x, y, randColor));
+    }
+
+    public void onClearButtonClick(ActionEvent actionEvent) {
+        if(!vertices.isEmpty()){
+            vertices.clear();
+            apPane.getChildren().clear();
+        }
+    }
 
 }
